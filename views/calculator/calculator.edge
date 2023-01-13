@@ -1,0 +1,91 @@
+<div class="bg-slate-800 border-none gap-6 p-4 m-2 bg-slate-800 rounded-lg w-fit">
+    <div class="flex flex-row justify-between items-center">
+        <input disabled="true" type="text" name="q" value="{{query ? query : ''}}" class="w-full placeholder:italic text-slate-200 placeholder:text-slate-400 bg-slate-800 outline-none border-none p-2">
+        <span id="calculator" class="text-slate-200 font-medium text-xl">{{calculate}}</span>
+    </div>
+    <div class="grid grid-cols-4 gap-2 w-full max-w-[16rem]">
+        <button aria-label="calculator" type="submit" class="p-2 bg-slate-700 hover:bg-slate-900 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>AC</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-slate-700 hover:bg-slate-900 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>±</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-slate-700 hover:bg-slate-900 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>%</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-orange-700 hover:bg-orange-800 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>÷</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-slate-700 hover:bg-slate-900 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>7</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-slate-700 hover:bg-slate-900 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>8</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-slate-700 hover:bg-slate-900 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>9</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-orange-700 hover:bg-orange-800 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>x</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-slate-700 hover:bg-slate-900 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>4</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-slate-700 hover:bg-slate-900 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>5</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-slate-700 hover:bg-slate-900 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>6</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-orange-700 hover:bg-orange-800 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>-</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-slate-700 hover:bg-slate-900 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>1</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-slate-700 hover:bg-slate-900 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>2</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-slate-700 hover:bg-slate-900 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>3</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-orange-700 hover:bg-orange-800 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>+</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="col-span-2 p-2 bg-slate-700 hover:bg-slate-900 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>0</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-slate-700 hover:bg-slate-900 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>.</span>
+        </button>
+        <button aria-label="calculator" type="submit" class="p-2 bg-orange-700 hover:bg-orange-800 transition-colors duration-300 rounded text-slate-200 flex flex-row items-center justify-center">
+            <span>=</span>
+        </button>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('button[aria-label=calculator]').forEach(button => {
+        button.addEventListener('click', () => {
+            const input = document.querySelector('input[disabled=true]')
+            const value = button.innerText
+            if (value === 'AC') {
+                input.value = ''
+            } else if (value === '±') {
+                input.value = '-(' + input.value + ')'
+                document.querySelector('#calculator').innerText = eval(input.value) ?? 0;
+            } else if (value === '%') {
+                input.value += '/100'
+                document.querySelector('#calculator').innerText = eval(input.value) ?? 0;
+            } else if (value === '÷') {
+                input.value += '/'
+            } else if (value === 'x') {
+                input.value += '*'
+            } else if (value === '=') {
+                document.querySelector('#calculator').innerText = eval(input.value) ?? 0;
+            } else {
+                input.value += value
+            }
+        })
+    })
+</script>

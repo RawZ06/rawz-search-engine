@@ -1,0 +1,30 @@
+{
+  "name": "alex-search",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "tsc": "tsc",
+    "start": "tsc && node dist/index.js",
+    "run": "ts-node src/index.ts",
+    "dev": "tsc-watch --onSuccess \"node dist/index.js\""
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "@types/node": "^18.11.18",
+    "@types/url-parse": "^1.4.8",
+    "ts-node": "^10.3.0",
+    "tsc-watch": "^4.5.0",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "edge.js": "^5.5.0",
+    "express": "^4.18.2",
+    "jsdom": "^21.0.0",
+    "node-fetch": "2.6.6",
+    "url-parse": "^1.5.10"
+  }
+}

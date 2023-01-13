@@ -1,0 +1,25 @@
+<div class="p-2 m-2 bg-slate-800 rounded-lg text-slate-200 flex flex-row items-center gap-2">
+    <div class="flex flex-row item-center p-2">
+        <i class="fa-solid fa-search"></i>
+    </div>
+    <input value="{{query ? query : ''}}" name="q" placeholder="Recherche" class="w-full placeholder:italic placeholder:text-slate-400 bg-slate-800 outline-none border-none p-2">
+    <div class="flex flex-row item-center p-2">
+        <i onclick="document.querySelector('input[name=q]').value = ''" class="fa-solid fa-times hover:text-slate-500 transition-colors duration-300 cursor-pointer"></i>
+    </div>
+    <div class="bg-slate-900 hover:bg-slate-700 rounded-lg transition-colors duration-300">
+        <button type="submit" class="p-2 m-2 rounded text-slate-200 flex flex-row items-center">
+            <i class="fa-solid fa-search"></i>
+        </button>
+    </div>
+</div>
+<script>
+    document.querySelector('input[name="q"]').addEventListener('keyup', function (event) {
+        if (event.key === 'Enter') {
+            window.location.href = '/search?q=' + this.value.replaceAll('+', '%2B').replaceAll(' ', '+');
+        }
+    });
+
+    document.querySelector('button[type=submit]').addEventListener('click', function (event) {
+        window.location.href = '/search?q=' + document.querySelector('input[name="q"]').value.replaceAll('+', '%2B').replaceAll(' ', '+');
+    });
+</script>

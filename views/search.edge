@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/8b48354303.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.0/turbolinks.min.js"></script>
+    <script>
+        Turbolinks.start()
+    </script>
+    <title>Document</title>
+</head>
+<body class="bg-slate-900 flex flex-col gap-4 w-9/10 md:w-4/5 md:max-w-[1200px] mx-auto">
+<div class="flex flew-row gap-2 items-center m-2">
+    <div style="font-family: Trebuchet MS, sans-serif" class="text-sm text-blue-400 font-medium p-2 flex flex-row gap-1 items-center">
+        @set('style', 'w-10 h-10')
+        @include('logo/logo')
+        <span>Alex Engine</span>
+    </div>
+    <div class="w-full">
+        @include('searchbar/searchbar')
+    </div>
+</div>
+@if(calculate)
+@include('calculator/calculator')
+@end
+@include('results/results')
+<div class="m-auto">
+    <a href="/search?q={{query}}&page={{page+1}}" class="bg-slate-800 px-8 py-2 rounded hover:bg-slate-700 text-white transition-colors duration-300">Plus de résultat</a>
+</div>
+</body>
+</html>

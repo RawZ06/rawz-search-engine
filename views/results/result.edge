@@ -1,0 +1,19 @@
+<li>
+    <div class="flex flex-col">
+        <a class="text-xl text-blue-500 hover:text-blue-600 hover:underline transition-all duration-100 flex flex-row gap-1 items-center" href="{{ result.link }}">
+            <div>
+                <img src="https://s2.googleusercontent.com/s2/favicons?domain_url={{ result.link }}" />
+            </div>
+            {{ result.title }}
+        </a>
+        <small class="text-sm">
+            <a class="text-green-500" href="{{ result.url.homepage }}">{{ result.url.domain }}</a>
+            @each(breadcrumb in result.url.path)
+            <span class="text-green-500"><i class="fa-solid fa-chevron-right"></i> {{breadcrumb}}</span>
+            @endeach
+        </small>
+    </div>
+    <p class="text-sm text-slate-500">{{ result.snippet }}</p>
+    <a target="popup" href="{{ result.link }}"
+       onclick="window.open('{{ result.link }}','popup','width=600,height=800,top=100,left=200'); return false;" class="text-sm text-blue-500 hover:text-blue-600 hover:underline transition-all duration-100">Prévisualiser</a>
+</li>
