@@ -1,8 +1,8 @@
-version: '3.5' # We use version 3.5 syntax
-services: # Here we define our service(s)
-    alex-search-engine: # The name of the service
-      container_name: alex-search-engine  # Container name
-      build: ./ # Location of our Dockerfile
-      ports: 
-        - '3000:3000' # Port mapping
-      restart: 'always'
+version: '3'
+services:
+  alex-search-engine:
+    container_name: alex-search-engine
+    build: ./
+    ports:
+      - '3100:3100'
+    restart: 'always'

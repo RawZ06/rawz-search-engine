@@ -25,7 +25,8 @@ RUN npm install -g pnpm@7.24.2 && npm cache clean --force
 RUN pnpm install --production
 
 COPY --from=build /app/dist ./dist
+COPY --from=build /app/views ./views
 
-EXPOSE 3000
+EXPOSE 3100
 
 CMD [ "node", "dist/index.js" ]
