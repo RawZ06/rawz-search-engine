@@ -1,28 +1,13 @@
-pipeline {
-    agent any
-    
     stages {
-        stage('Build docker') {
+        stage('Build') {
             steps {
-                script {
-                    docker.withRegistry('', 'dockerhub') {
-                        def imageName = "rawz-search-engine:latest"
-                        def dockerfile = "Dockerfile"
-                        
-                        docker.build(imageName, "-f ${dockerfile} .")
-                        docker.image(imageName).push()
-                    }
-                }
+                sh 'docker build .'
+                sh 'docker build . -t rawz-seach-engine'
             }
         }
-        stage('Restart container') {
+        stage('Deploy') {
             steps {
-                script {
-                    sshagent(['SSH remote']) {
-                        sh 'ssh alexandre@devops.alexandre-longordo.fr "cd /home/alexandre/system-container/projects/rawz-search-engine && docker-compose up -d"'
-                    }
-                }
+                sh 'cd /home/system/projects/rawz-seach-engine && docker-compose up -d'
             }
         }
     }
-}
